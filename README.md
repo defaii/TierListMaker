@@ -55,7 +55,16 @@ cp .env.example .env
 
 ## Usage
 
-### Development Mode
+### Development Mode (Recommended)
+
+**Option 1: Launch both servers automatically (Recommended)**
+```bash
+npm run dev
+```
+
+This single command will start both the backend API server (port 5000) and the frontend development server (port 3000) concurrently. The application will automatically open at `http://localhost:3000`.
+
+**Option 2: Launch servers separately**
 
 1. Start the backend server (for image uploads):
 ```bash
@@ -183,11 +192,12 @@ npm test
 
 ### Available Scripts
 
-- `npm start` - Start the frontend development server
+- `npm run dev` - **Start both frontend and backend servers concurrently (Recommended)**
+- `npm start` - Start the frontend development server only
+- `npm run server` - Start the backend API server only
+- `npm run dev:server` - Start backend with auto-reload (requires nodemon)
 - `npm run build` - Create production build
 - `npm test` - Run tests in watch mode
-- `npm run server` - Start the backend API server
-- `npm run dev:server` - Start backend with auto-reload (requires nodemon)
 
 ### Environment Variables
 

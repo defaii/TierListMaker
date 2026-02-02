@@ -25,7 +25,8 @@
     "eject": "react-scripts eject",
     "server": "node server.js",
     "image_serveur": "npm run dev:server",
-    "dev:server": "nodemon server.js"
+    "dev:server": "nodemon server.js",
+    "dev": "concurrently \"npm run dev:server\" \"npm start\" --names \"API,APP\" --prefix-colors \"blue,green\""
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +48,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
+    "concurrently": "^9.1.2",
     "nodemon": "^2.0.22",
     "postcss": "^8.5.6"
   }
