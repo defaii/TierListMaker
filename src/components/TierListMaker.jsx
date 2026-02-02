@@ -4,6 +4,7 @@ import ItemImporter from './ItemImporter'
 import TierTable from './TierTable'
 import ItemModal from './ItemModal'
 import { loadData, saveData } from '../utils/storage'
+import { getApiUrl } from '../utils/apiConfig'
 
 const DEFAULT = {
     step: 1,
@@ -100,7 +101,7 @@ function TierListMaker() {
                     if (!window.confirm('Confirmez-vous la suppression de cette image ? Elle sera supprimée du serveur et de la liste.')) return
 
                     // si l'image provient du dossier uploads du serveur, on tente de la supprimer
-                    const apiUrl = process.env.REACT_APP_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' && window.location.port === '3000' ? 'http://localhost:5000' : '')
+                    const apiUrl = getApiUrl()
                     let filename = null
                     if (item.image && typeof item.image === 'string') {
                         try {
@@ -122,7 +123,6 @@ function TierListMaker() {
                                 throw new Error(err.message || `Erreur ${res.status}`)
                             }
                         } catch (err) {
-                            console.error('Erreur lors de la suppression serveur:', err)
                             if (!window.confirm("Échec de la suppression sur le serveur. Supprimer localement quand même ?")) return
                         }
                     }
